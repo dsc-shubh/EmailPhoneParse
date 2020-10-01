@@ -11,13 +11,13 @@ from bs4 import BeautifulSoup
 import re
 from urllib.request import urlopen
 
-f = urlopen('http://www.bc.edu/a-z/directories/contact/quicknos.html')
+f = urlopen('http://www.bc.edu/a-z/directories/contact/quicknos.html') //mention comments for better understanding
 
 s = BeautifulSoup(f, 'html.parser')
-s = s.get_text()
+s = s.get_text() //initialising
 
-phone = re.findall(r"((?:\d{3}|\(\d{3}\))?(?:\s|-|\.)?\d{3}(?:\s|-|\.)\d{4})",s)
-emails = re.findall(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}",s)
+phone = re.findall(r"((?:\d{3}|\(\d{3}\))?(?:\s|-|\.)?\d{3}(?:\s|-|\.)\d{4})",s) //for the phone
+emails = re.findall(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}",s)  //for the email
 
 if len(phone) == 0:
     print ("Sorry, no phone number found.")
